@@ -9,6 +9,9 @@
 
   th {
     font-family: roboto-bold;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   td {
@@ -17,7 +20,6 @@
 
   tr {
     &:hover {
-      cursor: pointer;
       background-color: #fff;
     }
   }
