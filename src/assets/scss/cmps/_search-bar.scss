@@ -1,0 +1,21 @@
+.form-container {
+  padding-top: 26px;
+  display: flex;
+  justify-content: center;
+
+  label {
+    margin-right: 12px;
+  }
+
+  button {
+    background-color: rgb(98, 94, 94);
+    color: white;
+    margin-left: 12px;
+    font-family: roboto-medium;
+    font-size: 18px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

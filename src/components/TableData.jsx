@@ -5,17 +5,17 @@ export function TableData({ approvedAdvertisers }) {
 
   return (
     <>
-      <table>
+      <table className='data-container'>
         <thead>
           <tr>
-            <th>Advertiser's domain</th>
+            <th className='domain'>Advertiser's domain</th>
             <th>Count</th>
           </tr>
         </thead>
         <tbody>
           {tableData.map((domain) => (
             <tr key={domain[0]}>
-              <td>{domain[0]}</td>
+              <td className='domain'>{domain[0]}</td>
               <td>{domain[1]}</td>
             </tr>
           ))}

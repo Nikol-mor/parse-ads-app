@@ -1,2 +1,10 @@
 @import 'base/utils';
 @import 'base/variables';
+@import 'base/typography';
+
+@import 'pages/main-page';
+@import 'base/base';
+
+@import 'cmps/header';
+@import 'cmps/table-data';
+@import 'cmps/search-bar';

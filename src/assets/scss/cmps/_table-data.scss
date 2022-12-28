@@ -1,0 +1,29 @@
+.data-container {
+  width: 100%;
+  margin-top: 20px;
+
+  th,
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    font-family: roboto-bold;
+  }
+
+  td {
+    font-family: roboto-light;
+  }
+
+  tr {
+    &:hover {
+      cursor: pointer;
+      background-color: #fff;
+    }
+  }
+
+  .domain {
+    text-align: left;
+    padding-left: 20px;
+  }
+}

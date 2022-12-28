@@ -14,7 +14,7 @@ export function SearchBar({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='form-container'>
       <input type='text' value={searchDomain} onChange={handleChange}></input>
       <button>Search</button>
     </form>
