@@ -22,6 +22,9 @@ async function ajax(endpoint, method, data = null) {
       data,
       params: data,
       withCredentials: false,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
     });
     return res;
   } catch (error) {
