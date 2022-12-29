@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { SearchBar } from './SearchBar';
+import { downloadFile } from '../services/utils/downloadFile';
 
-export function TableData({ approvedAdvertisers }) {
+export function TableData({ approvedAdvertisers, host }) {
   const [tableData, setTableData] = useState(approvedAdvertisers);
   const [sortDirection, setSortDirection] = useState('');
 
@@ -13,6 +14,23 @@ export function TableData({ approvedAdvertisers }) {
     });
     console.log('filtered tabel', filteredTable);
     setTableData(filteredTable);
+  };
+
+  const onDownload = () => {
+    console.log('download clciked');
+    const d = tableData.flat();
+
+    // let csvRows = [];
+    // const obj = Object.fromEntries(tableData);
+    // const headers = Object.keys(obj);
+    // csvRows.push(headers.join(','));
+    // const values = Object.values(obj).join(',');
+    // csvRows.push(values);
+    // let csvData = csvRows.join('\n');
+
+    // console.log(csvData);
+    console.log(d);
+    downloadFile(JSON.stringify(d), `adsDataOf_${host}.csv`, 'text.csv');
   };
 
   const sortTable = (column) => {
@@ -31,6 +49,7 @@ export function TableData({ approvedAdvertisers }) {
   return (
     <>
       <SearchBar sourceComponent={'tableData'} onSubmit={filterTable} />
+      <button onClick={() => onDownload()}>Download data</button>
       <table className='data-container'>
         <thead>
           <tr>
