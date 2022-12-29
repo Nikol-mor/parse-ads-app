@@ -10,19 +10,18 @@ var axios = Axios.create({
 
 export const httpService = {
   get(endpoint, data) {
-    return ajax(endpoint, 'GET', data);
+    return ajax(endpoint, 'get', data);
   },
 };
 
-async function ajax(endpoint, method = 'GET', data = null) {
-  console.log('url', `${BASE_URL}${endpoint}`);
-
+async function ajax(endpoint, method, data = null) {
   try {
     const res = await axios({
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
       params: data,
+      withCredentials: false,
     });
     return res;
   } catch (error) {
