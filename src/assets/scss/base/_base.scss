@@ -5,9 +5,17 @@ body {
 
 .app-container {
   text-align: center;
+  padding: 50px;
+  margin: 20px;
 }
 
 .main-container {
-  background-color: #b5b5b569;
+  background-color: white;
   min-height: 100vh;
+}
+
+@include tablet-layout {
+  .app-container {
+    padding: 0;
+  }
 }

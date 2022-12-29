@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
+import TextField from '@mui/material/TextField';
 
 export function SearchBar({ onSubmit, sourceComponent }) {
-  // const [searchDomain, setSearchDomain] = useState('');
   const [txt, setTxt] = useState('');
 
   const handleChange = (ev) => {
-    // setSearchDomain(ev.target.value);
     setTxt(ev.target.value);
   };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    // onSubmit(searchDomain);
     onSubmit(txt);
   };
 
   return (
     <form onSubmit={handleSubmit} className='form-container'>
-      {/* <input type='text' value={searchDomain} onChange={handleChange}></input> */}
-      <input type='text' value={txt} onChange={handleChange}></input>
+      {sourceComponent === 'main' && (
+        <TextField
+          type='text'
+          value={txt}
+          onChange={handleChange}
+          placeholder='e.g. msn.com'
+          label='Search domain '></TextField>
+      )}
+      {sourceComponent === 'tableData' && (
+        <TextField
+          type='text'
+          value={txt}
+          onChange={handleChange}
+          label='Filter table by name'></TextField>
+      )}
       <button>Search</button>
     </form>
   );

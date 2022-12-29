@@ -19,16 +19,16 @@ export default function MainPage() {
       let adsData = await httpService.get('adsData', { searchDomain });
       if (adsData.status === 200) setAdsData(adsData);
       else setAdsData(null);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
     setIsLoading(false);
   };
 
   return (
     <>
-      <SearchBar onSubmit={getDataBySearchedDomain} />
-      <ScaleLoader color={'blue'} loading={isLoading} width={'6px'} />
+      <SearchBar onSubmit={getDataBySearchedDomain} sourceComponent={'main'} />
+      <ScaleLoader className='loader' loading={isLoading} />
       {adsData.status === 200 && (
         <TableData approvedAdvertisers={adsData.data} host={searchedDomain} />
       )}

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { Button } from '@mui/material';
+
 import { SearchBar } from './SearchBar';
+
 import { downloadFile } from '../services/utils/downloadFile';
 
 export function TableData({ approvedAdvertisers, host }) {
@@ -7,30 +10,16 @@ export function TableData({ approvedAdvertisers, host }) {
   const [sortDirection, setSortDirection] = useState('');
 
   const filterTable = (txt) => {
-    console.log('txt', txt);
     const filteredTable = tableData.filter((domain) => {
       let shortDomain = domain[0].split('.')[0];
       return shortDomain.toLowerCase().includes(txt.toLowerCase());
     });
-    console.log('filtered tabel', filteredTable);
     setTableData(filteredTable);
   };
 
   const onDownload = () => {
-    console.log('download clciked');
-    const d = tableData.flat();
-
-    // let csvRows = [];
-    // const obj = Object.fromEntries(tableData);
-    // const headers = Object.keys(obj);
-    // csvRows.push(headers.join(','));
-    // const values = Object.values(obj).join(',');
-    // csvRows.push(values);
-    // let csvData = csvRows.join('\n');
-
-    // console.log(csvData);
-    console.log(d);
-    downloadFile(JSON.stringify(d), `adsDataOf_${host}.csv`, 'text.csv');
+    const flattenedTable = tableData.flat();
+    downloadFile(JSON.stringify(flattenedTable), `adsDataOf_${host}.csv`, 'text.csv');
   };
 
   const sortTable = (column) => {
@@ -48,8 +37,12 @@ export function TableData({ approvedAdvertisers, host }) {
 
   return (
     <>
-      <SearchBar sourceComponent={'tableData'} onSubmit={filterTable} />
-      <button onClick={() => onDownload()}>Download data</button>
+      <div className='table-header'>
+        <SearchBar sourceComponent={'tableData'} onSubmit={filterTable} />
+        <Button variant='outlined' onClick={() => onDownload()} className='download-btn'>
+          Download data
+        </Button>
+      </div>
       <table className='data-container'>
         <thead>
           <tr>

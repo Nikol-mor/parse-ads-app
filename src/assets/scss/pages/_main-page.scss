@@ -1,5 +1,16 @@
 .main-container {
   flex-grow: 1;
-  font-family: livic-semi-bold;
+  font-family: roboto;
   font-size: 20px;
+  padding: 0 50px 0 50px;
+
+  .loader {
+    padding-top: 20px;
+  }
+}
+
+@include tablet-layout {
+  .main-container {
+    padding: 0;
+  }
 }
